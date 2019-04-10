@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    build: docker/nginx
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+
+  php:
+    build: docker/php
+    volumes:
+      - ./:/var/www/html
+
+  mysql:
+    build: docker/mysql
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    ports:
+      - 3306:3306

@@ -1,0 +1,500 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "STOA schedule API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/schedules/{stoa_id}": {
+            "post": {
+                "tags": [
+                    "schedule"
+                ],
+                "summary": "Добавление расписания для СТОА",
+                "description": "Добавление расписания для СТОА",
+                "operationId": "setSchedule",
+                "parameters": [
+                    {
+                        "name": "stoa_id",
+                        "in": "path",
+                        "description": "Stoa id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "monday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "tuesday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "wednesday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "thursday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "friday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "saturday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "sunday": {
+                                        "description": "Set schedule for specified stoa",
+                                        "properties": {
+                                            "from": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            },
+                                            "to": {
+                                                "description": "Set schedule for specified stoa",
+                                                "type": "string",
+                                                "example": "00:00:00"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешно"
+                    },
+                    "404": {
+                        "description": "Ошибка: СТОА не найдена"
+                    }
+                }
+            }
+        },
+        "/api/schedules/{id}": {
+            "delete": {
+                "tags": [
+                    "schedule"
+                ],
+                "summary": "Удаление расписания для СТОА",
+                "operationId": "eraseSchedule",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "schedule id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Расписание не найдено"
+                    },
+                    "204": {
+                        "description": "Успешно"
+                    }
+                }
+            }
+        },
+        "/api/schedules/import": {
+            "post": {
+                "tags": [
+                    "schedule"
+                ],
+                "summary": "Импорт расписания",
+                "operationId": "import",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "properties": {
+                                    "file": {
+                                        "description": "Файл",
+                                        "type": "file",
+                                        "format": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешно"
+                    }
+                }
+            }
+        },
+        "/api/stoas": {
+            "get": {
+                "tags": [
+                    "stoa"
+                ],
+                "summary": "Информация обо всех СТОА",
+                "description": "Информация обо всех СТОА",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Успешно"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "stoa"
+                ],
+                "summary": "Добавление СТОА",
+                "description": "Добавление СТОА",
+                "operationId": "create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Название СТОА",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Успешно"
+                    },
+                    "422": {
+                        "description": "Некорректные данные"
+                    }
+                }
+            }
+        },
+        "/api/stoas/{id}": {
+            "get": {
+                "tags": [
+                    "stoa"
+                ],
+                "summary": "Информация о конкретной СТОА",
+                "description": "Информация о конкретной СТОА",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Stoa id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешно"
+                    },
+                    "404": {
+                        "description": "СТОА не найдена"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "stoa"
+                ],
+                "summary": "Обновление СТОА",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Stoa id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "Новое название",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешно"
+                    },
+                    "404": {
+                        "description": "СТОА не найдена"
+                    },
+                    "422": {
+                        "description": "Некорректные данные"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "stoa"
+                ],
+                "summary": "Удаление СТОА",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Stoa id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "СТОА не найдена"
+                    },
+                    "204": {
+                        "description": "Успешно"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Schedule": {
+                "title": "Schedule model",
+                "description": "Schedule model",
+                "required": [
+                    "stoa_id",
+                    "monday_from",
+                    "monday_to",
+                    "tuesday_from",
+                    "tuesday_to",
+                    "wednesday_from",
+                    "wednesday_to",
+                    "thursday_from",
+                    "thursday_to",
+                    "friday_from",
+                    "friday_to",
+                    "saturday_from",
+                    "saturday_to",
+                    "sunday_from",
+                    "sunday_to"
+                ],
+                "properties": {
+                    "stoa_id": {
+                        "schema": "Schedule",
+                        "title": "Stoa id",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "monday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "time"
+                    },
+                    "monday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "tuesday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "tuesday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "wednesday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "wednesday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "thursday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "thursday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "friday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "friday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "saturday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "saturday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "sunday_from": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    },
+                    "sunday_to": {
+                        "schema": "Schedule",
+                        "description": "Class Schedule",
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "Stoa": {
+                "title": "Stoa model",
+                "description": "Stoa model",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "schema": "Stoa",
+                        "description": "Stoa id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "schema": "Stoa",
+                        "description": "Stoa name",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
